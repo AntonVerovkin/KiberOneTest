@@ -1,9 +1,10 @@
-package org.example.utils;
+package org.example.untils;
 
 import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Properties;
+
 
 public class ConfigProvider {
     private static final String CONFIG_PATH = "config.properties";

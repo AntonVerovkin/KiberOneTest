@@ -2,6 +2,7 @@ package org.example.core.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.example.core.Browsers;
+import org.example.untils.ConfigProvider;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,7 +14,8 @@ public class WebDriverFactory {
     private static WebDriver driver;
 
     public static WebDriver getDriver() {
-        String browserType = BROWSER != null ? BROWSER : org.example.utils.ConfigProvider.getBROWSER();
+        String browserType = BROWSER != null ? BROWSER : ConfigProvider.getBROWSER();
+
         return getDriver(Browsers.valueOf(browserType.toUpperCase()));
     }
 
@@ -30,7 +32,7 @@ public class WebDriverFactory {
 
     public static WebDriver getChromeDriver(){
         if( driver == null) {
-            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().driverVersion("109.0.5414.120").setup();
             driver = new ChromeDriver();
         }
         return driver;
