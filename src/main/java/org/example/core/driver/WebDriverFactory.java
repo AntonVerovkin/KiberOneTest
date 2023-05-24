@@ -12,8 +12,10 @@ public class WebDriverFactory {
     private static final String BROWSER = System.getProperty("browser");
     private static WebDriver driver;
 
-
-
+    public static WebDriver getDriver() {
+        String browserType = BROWSER != null ? BROWSER : org.example.utils.ConfigProvider.getBROWSER();
+        return getDriver(Browsers.valueOf(browserType.toUpperCase()));
+    }
 
     public static WebDriver getDriver(Browsers browsers){
        return switch (browsers) {
