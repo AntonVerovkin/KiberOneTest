@@ -48,11 +48,11 @@ public class LumaHomePage extends BasePage{
 
         WebElement searchResult = driver.findElement(By.xpath("//span[@data-ui-id='page-title-wrapper']"));
         String resultText = searchResult.getText();
-        Assert.assertTrue(resultText.contains(forSearching), "Результат поиска не содержит 'yoga'");
+        Assert.assertTrue(resultText.contains(forSearching), "Результат поиска не содержит " + forSearching);
 
         WebElement searchResult2 = driver.findElement(By.xpath("//li[@class='item search']//strong"));
         String resultText2 = searchResult2.getText();
-        Assert.assertTrue(resultText2.contains(forSearching), "Результат поиска не содержит 'yoga'");
+        Assert.assertTrue(resultText2.contains(forSearching), "Результат поиска не содержит " + forSearching);
 
     }
 }
