@@ -26,7 +26,7 @@ public class TestNgTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.open();
         waitUntilElementISVisible(driver, homePage.getElLaptopCta());
-        if (homePage.getElLaptopCta().getText().equalsIgnoreCase("Ноутбуки2")) {
+        if (homePage.getElLaptopCta().getText().equalsIgnoreCase("Ноутбуки")) {
             log.info("INFO: title works correct: " + homePage.getElLaptopCta().getText());
         } else {
             log.error("Expected title doesn't match actual title: " + homePage.getElLaptopCta().getText());
@@ -59,8 +59,9 @@ public class TestNgTest extends BaseTest {
 
         laptopsPage.getElDell().click();
 
+        waitUntilElementISVisible(driver, laptopsPage.getElsItemTitleList().get(0));
         for (WebElement item : laptopsPage.getElsItemTitleList()) {
-            waitUntilElementISVisible(driver, (WebElement) laptopsPage.getElsItemTitleList());
+            waitUntilElementISVisible(driver, item);
             String title = item.getText();
             Assert.assertTrue(title.contains("Dell"), "Laptop title does not contain 'Dell': " + title);
         }
