@@ -20,5 +20,15 @@ public class DataProviderMethods {
                 {"short"},
                 {"watch"}
         };
+
     }
-}
+    @DataProvider
+    public  Object[][] dataForSinging(){
+        return  new Object[][] {
+                {"", ""},
+                {"aaa", ""},
+                {"", "aaa"},
+                {"sas", "aa@aa.com"},
+
+        };
+}}
