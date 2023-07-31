@@ -31,4 +31,16 @@ public class DataProviderMethods {
                 {"sas", "aa@aa.com"},
 
         };
-}}
+    }
+    @DataProvider
+    public  Object[][] dataForColor(){
+        return  new Object[][] {
+                {"White"},
+                {"Blue"},
+                {""},
+                {"Black"},
+
+        };
+    }
+
+}
