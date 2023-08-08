@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.example.untils.WaitUtils.waitUntilElementISClickable;
 import static org.example.untils.WaitUtils.waitUntilElementISVisible;
@@ -52,20 +56,35 @@ public class LumaCatalogPage extends  BasePage{
     }
 
     public void setColor(String color){
-        waitUntilElementISClickable(driver, elColorBlackClick);
+
         switch (color){
 
             case "Black":
+                waitUntilElementISClickable(driver, elColorBlackClick);
                 elColorBlackClick.click();
-                waitUntilElementISClickable(driver, elColorBlueClick);
+                break;
             case "Blue":
+                waitUntilElementISClickable(driver, elColorBlueClick);
                 elColorBlueClick.click();
-                waitUntilElementISClickable(driver, elColorWhiteClick);
+                break;
             case "White":
+                waitUntilElementISClickable(driver, elColorWhiteClick);
                 elColorWhiteClick.click();
+                break;
         }
     }
+    public void CheckErrorMessageError(String color){
+        List<WebElement> elColorList = new ArrayList<>();
+        elColorList.add(elColorBlackClick);
+        elColorList.add(elColorBlueClick);
+        elColorList.add(elColorWhiteClick);
 
+        boolean isNoneMatchInList = elColorList.stream().noneMatch(x -> x.getAttribute("data-option-label").equalsIgnoreCase(color));
+        if (color.isEmpty()  || isNoneMatchInList){
+            waitUntilElementISVisible(driver, elColorErrorClick);
+            Assert.assertEquals(elColorErrorClick.getText(), "This is a required field.", "Abeme");
+        }
+    }
 }
 
 

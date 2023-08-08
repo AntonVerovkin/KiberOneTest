@@ -14,7 +14,8 @@ public class KatalogTest extends BaseTest{
 
         lumaCatalogPage.getElSizeClick().click();
         lumaCatalogPage.setColor(color);
-
+        lumaCatalogPage.getElCartButton().click();
+        lumaCatalogPage.CheckErrorMessageError(color);
     }
 
 }
